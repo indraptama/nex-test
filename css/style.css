@@ -51,7 +51,7 @@
  * Place any of your own variables that sit on top of inuit.css here.
  */
 h1, h2, h3, h4 {
-  font-weight: 100; }
+  font-weight: 300; }
 
 h5, h6 {
   font-weight: 500; }
@@ -2990,7 +2990,8 @@ body {
  * corp img and keep aspect ratop
  */
 .ratio_16x9,
-.img-container {
+.img-container,
+.figure__img {
   position: relative;
   display: block;
   width: 100%;
@@ -2998,12 +2999,14 @@ body {
   overflow: hidden;
   margin-bottom: 26px; }
   .ratio_16x9:before,
-  .img-container:before {
+  .img-container:before,
+  .figure__img:before {
     content: "";
     display: block;
     padding-top: 56.25%; }
   .ratio_16x9 > img,
-  .img-container > img {
+  .img-container > img,
+  .figure__img > img {
     position: absolute;
     top: 0;
     right: 0;
@@ -3166,22 +3169,23 @@ footer {
  */
 .hero {
   background: #372d28;
-  padding-bottom: 104px; }
+  margin-bottom: 104px;
+  color: #fff;
+  text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.4); }
   .hero > *:last-child {
     margin-bottom: 0; }
 
 .has-arrow {
   position: relative;
-  margin-bottom: 104px;
   overflow: hidden; }
   .has-arrow:before, .has-arrow:after {
     position: absolute;
     bottom: 0;
     content: "";
+    height: 52px;
     width: 50%;
     display: inline-block;
-    background: #f4f0e2;
-    padding-bottom: 52px; }
+    background: #f4f0e2; }
   .has-arrow:before {
     left: -22px;
     -webkit-transform: skew(40deg);
@@ -3194,6 +3198,16 @@ footer {
     -moz-transform: skew(-40deg);
     -o-transform: skew(-40deg);
     transform: skew(-40deg); }
+
+/**
+ * Slider 
+ */
+.slider__body {
+  vertical-align: middle !important;
+  padding-bottom: 78px; }
+
+.slider__img {
+  vertical-align: bottom !important; }
 
 /**
  * Media News
@@ -3226,6 +3240,10 @@ footer {
 .satin-bg {
   background: #BC8554;
   border: none; }
+
+.walnut-bg {
+  background: #a1804c;
+  color: #f4f0e2; }
 
 /**
  * Parallax background 
@@ -4225,29 +4243,6 @@ footer {
 /**
  * $ Slider Classes
  */
-.slider-overlay {
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 60%;
-  height: 60%;
-  min-width: 200px;
-  max-width: 800px;
-  padding: 40px; }
-
-.hero {
-  color: #fff;
-  text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.8); }
-
-.slider__body {
-  vertical-align: middle !important; }
-
-.slider__img {
-  vertical-align: bottom !important; }
-
 /**
  * Responsive Navigation
  */
