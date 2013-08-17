@@ -12,15 +12,39 @@
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     
+        <!-- Hammer reload -->
+          <script>
+            setInterval(function(){
+              try {
+                if(typeof ws != 'undefined' && ws.readyState == 1){return true;}
+                ws = new WebSocket('ws://'+(location.host || 'localhost').split(':')[0]+':35353')
+                ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
+                ws.onmessage = function(){
+                  var links = document.getElementsByTagName('link'); 
+                    for (var i = 0; i < links.length;i++) { 
+                    var link = links[i]; 
+                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) { 
+                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,''); 
+                      link.href = href + (href.indexOf('?')>=0?'&':'?') + 'hammer='+(new Date().valueOf());
+                    }
+                  }
+                }
+              }catch(e){}
+            }, 1000)
+          </script>
+        <!-- /Hammer reload -->
+      
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type='text/css'>
 	<link rel='stylesheet' href='css/style.min.css'>
+    <link rel='stylesheet' href='css/style.css'>
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
 <header class="cf">
 	<div class="container main-heading">
 		<h1 class="logo">Nexwood</h1>
-		<nav class="" id="nadv">
+		<a href="#" class="toggle visuallyhidden--desk">$</a>
+		<nav class="main-nav" id="nadv">
 
 			<a href="index.html">Home</a><a href="product.html">Product</a><a href="install.html">Installation Guide</a><a href="news-fp.html">News</a><a class='current' href="about.html">About</a><a href="#contact">Contact</a>
 
@@ -253,7 +277,12 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-<script src='js/nexwood.js'></script>
+<script src='js/nexwood-js'></script>
+<script src='js/plugins.js'></script>
+<script src='js/jquery.idTabs.js'></script>
+<script src='js/jquery.backstretch.min.js'></script>
+<script src='js/jhere.min.js'></script>
+<script src='js/tooltipster.min.js'></script>
 <script src="js/main.js"></script>
 
 <script type="text/javascript">

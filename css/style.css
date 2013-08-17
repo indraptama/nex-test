@@ -810,7 +810,7 @@ textarea:focus {
  * and over in your markup.
  */
 .cf:after, .nav:after, .media:after, .island:after,
-.islet:after, .matrix:after, .multi-list:after, .stat-group:after, .media__news:after, .icon-social:after {
+.islet:after, .stat-group:after, .media__news:after, .icon-social:after {
   content: "";
   display: table;
   clear: both; }
@@ -1807,59 +1807,6 @@ html.flexbox {
   content: "\00A0" "\00BB"; }
 
 /*------------------------------------*\
-    $BREADCRUMB
-\*------------------------------------*/
-/**
- * Simple breadcrumb styling to apply to (ordered) lists. Extends `.nav`, e.g.:
- *
-   <ol class="nav  breadcrumb">
-       <li><a href=#>Home</a></li>
-       <li><a href=#>About</a></li>
-       <li><a href=#>The Board</a></li>
-       <li class=current><a href=#>Directors</a></li>
-   </ol>
- *
- * Demo: jsfiddle.net/inuitcss/rkAY9
- *
- */
-.breadcrumb > li + li:before {
-  content: "\00BB" "\00A0"; }
-
-/**
- * For denoting a path-like structure, GitHub style, e.g.:
- *
-   <ol class="nav  breadcrumb--path">
-       <li class=breadcrumb__root><a href=#>inuit.css</a></li>
-       <li><a href=#>inuit.css</a></li>
-       <li><a href=#>partials</a></li>
-       <li class=current><a href=#>objects</a></li>
-   </ol>
- *
- */
-.breadcrumb--path > li + li:before {
-  content: "\002F" "\00A0"; }
-
-/**
- * Assign a delimiter on the fly through a data attribute, e.g.:
- *
-   <ol class="nav  breadcrumb">
-       <li><a href=#>Home</a></li>
-       <li data-breadcrumb="|"><a href=#>About</a></li>
-       <li data-breadcrumb="|"><a href=#>The Board</a></li>
-       <li data-breadcrumb="|" class=current><a href=#>Directors</a></li>
-   </ol>
- *
- */
-.breadcrumb > li + li[data-breadcrumb]:before {
-  content: attr(data-breadcrumb) "\00A0"; }
-
-/**
- * Denote the root of the tree.
- */
-.breadcrumb__root {
-  font-weight: bold; }
-
-/*------------------------------------*\
     $MEDIA
 \*------------------------------------*/
 /**
@@ -1911,50 +1858,6 @@ html.flexbox {
   margin-left: 13px; }
 
 /*------------------------------------*\
-    $MARGINALIA
-\*------------------------------------*/
-/**
- * Marginalia are, per definition, notes in the margin of a document. The
- * `marginalia__body` class can be applied to all kinds of content, like text or
- * images, and is joined by a width class:
- *
-   <div class="marginalia">
-       <div class="marginalia__body  desk-one-fifth"></div>
-   </div>
- *
- * Demo: jsfiddle.net/inuitcss/AemkH
- *
- */
-.marginalia {
-  font-size: 12px;
-  font-size: 0.75rem;
-  line-height: 2.16667; }
-
-/**
- * Wait for a certain breakpoint to trigger ‘proper' marginalia. Up to this point,
- * marginalia are inline with the other text.
- */
-@media (min-width: 1024px) {
-  .marginalia {
-    position: relative; }
-
-  .marginalia__body,
-  .marginalia__body--right {
-    position: absolute; }
-
-  .marginalia__body {
-    right: 100%;
-    padding-right: 26px;
-    text-align: right; }
-
-  /**
-   * Align marginalia to the right of the text.
-   */
-  .marginalia__body--right {
-    left: 100%;
-    padding-left: 26px;
-    text-align: left; } }
-/*------------------------------------*\
     $ISLAND
 \*------------------------------------*/
 /**
@@ -2003,93 +1906,22 @@ html.flexbox {
  * Demo: jsfiddle.net/inuitcss/hR57q
  *
  */
-.block-list, .matrix,
-.block-list > li,
-.matrix > li {
+.block-list,
+.block-list > li {
   border: 0 solid #cccccc; }
 
-.block-list, .matrix {
+.block-list {
   list-style: none;
   margin-left: 0;
   border-top-width: 1px; }
-  .block-list > li, .matrix > li {
+  .block-list > li {
     border-bottom-width: 1px;
     padding: 13px; }
 
-.block-list__link, .matrix__link {
+.block-list__link {
   display: block;
   padding: 13px;
   margin: -13px; }
-
-/*------------------------------------*\
-    $MATRIX
-\*------------------------------------*/
-/**
- * Create a grid of items out of a single list, e.g.:
- *
-   <ul class="matrix  three-cols">
-       <li class=all-cols>Lorem</li>
-       <li>Ipsum <a href=#>dolor</a></li>
-       <li><a href=# class=matrix__link>Sit</a></li>
-       <li>Amet</li>
-       <li class=all-cols>Consectetuer</li>
-   </ul>
- *
- * Extend this object in your theme stylesheet.
- *
- * Demo: jsfiddle.net/inuitcss/Y2zrU
- *
- */
-.matrix {
-  border-left-width: 1px; }
-  .matrix > li {
-    float: left;
-    border-right-width: 1px; }
-
-/**
- * The `.multi-list` object is a lot like the `.matrix` object only without the
- * blocky borders and padding.
- *
-   <ul class="multi-list  four-cols">
-       <li>Lorem</li>
-       <li>Ipsum</li>
-       <li>Dolor</li>
-       <li>Sit</li>
-   </ul>
- *
- * Demo: jsfiddle.net/inuitcss/Y2zrU
- *
- */
-.multi-list {
-  list-style: none;
-  margin-left: 0; }
-
-.multi-list > li {
-  float: left; }
-
-/**
- * Apply these classes alongside the `.matrix` or `.multi-list` classes on
- * lists to determine how wide their columns are.
- */
-.two-cols > li {
-  width: 50%; }
-
-.three-cols > li {
-  width: 33.333%; }
-
-.four-cols > li {
-  width: 25%; }
-
-.five-cols > li {
-  width: 20%; }
-
-/**
- * Unfortunately we have to qualify this selector in order to bring its
- * specificity above the `.[number]-cols > li` selectors above.
- */
-.matrix > .all-cols,
-.multi-list > .all-cols {
-  width: 100%; }
 
 /*------------------------------------*\
     $SPLIT
@@ -2125,68 +1957,6 @@ html.flexbox {
   text-align: left;
   float: left;
   clear: left; }
-
-/*------------------------------------*\
-    $THIS-OR-THIS
-\*------------------------------------*/
-/**
- * Simple options object to provide multiple choices, e.g.:
- *
-   <h1 class=this-or-this>
-       <a href=# class="this-or-this__this  two-fifths">
-           Free
-       </a>
-       <span class="this-or-this__or  one-fifth">
-           or
-       </span>
-       <a href=# class="this-or-this__this  two-fifths">
-           Pro
-       </a>
-   </h1>
- *
- * The `.this-or-this__this` and `.this-or-this__or` objects can be sized using
- * the grid-system classes.
- *
- * Demo: jsfiddle.net/inuitcss/R3sks
- *
- */
-.this-or-this {
-  display: table;
-  width: 100%;
-  text-align: center; }
-
-.this-or-this__this,
-.this-or-this__or {
-  display: table-cell;
-  vertical-align: middle; }
-
-/*------------------------------------*\
-    $LINK-COMPLEX
-\*------------------------------------*/
-/**
- * As inspired by @necolas:
- * github.com/necolas/suit-utils/blob/master/link.css#L18
- *
- * Add hover behaviour to only selected items within links, e.g.:
- *
-   <a href=log-in class=link-complex>
-       <i class="s  s--user"></i>
-       <span class=link-complex__target>Log in</span>
-   </a>
- *
- * Demo: jsfiddle.net/inuitcss/rt9M3
- *
- */
-.link-complex,
-.link-complex:hover,
-.link-complex:active,
-.link-complex:focus {
-  text-decoration: none; }
-
-.link-complex:hover .link-complex__target,
-.link-complex:active .link-complex__target,
-.link-complex:focus .link-complex__target {
-  text-decoration: underline; }
 
 /*------------------------------------*\
     $FLYOUT
@@ -2244,20 +2014,6 @@ html.flexbox {
   top: 0;
   left: 100%; }
 
-/*------------------------------------*\
-    $ARROWS
-\*------------------------------------*/
-/**
- * It is a common design treatment to give an element a triangular points-out
- * arrow, we typically build these with CSS. These following classes allow us to
- * generate these arbitrarily with a mixin, `@arrow()`.
- */
-/**
- * Forms the basis for any/all CSS arrows.
- */
-/**
- * Define individual edges so we can combine what we need, when we need.
- */
 /*------------------------------------*\
     $SPRITE
 \*------------------------------------*/
@@ -2579,46 +2335,6 @@ html.flexbox {
   border-radius: 0; }
 
 /*------------------------------------*\
-    $LOZENGES
-\*------------------------------------*/
-/**
- * Create pill- and lozenge-like runs of text, e.g.:
- *
-   <p>This <span class=pill>here</span> is a pill!</p>
- *
-   <p>This <span class=loz>here</span> is also a lozenge!</p>
- *
- * Pills have fully rounded ends, lozenges have only their corners rounded.
- *
- * Demo: jsfiddle.net/inuitcss/N3pGm
- *
- */
-.pill, .loz {
-  display: inline-block;
-  /**
-   * These numbers set in ems mean that, at its narrowest, a lozenge will be
-   * the same width as the `line-height` set on the `html` element.
-   * This allows us to use the `.loz` in almost any `font-size` we wish.
-   */
-  min-width: 1.08333em;
-  padding-right: 0.27083em;
-  padding-left: 0.27083em;
-  /* =1.50em */
-  text-align: center;
-  background-color: #cccccc;
-  color: #fff;
-  /* Override this color in your theme stylesheet */
-  /**
-   * Normally we’d use border-radius:100%; but instead here we just use an
-   * overly large number; `border-radius:100%;` would create an oval on
-   * non-square elements whereas we just want to round the ends of an element.
-   */
-  border-radius: 100px; }
-
-.loz {
-  border-radius: 4px; }
-
-/*------------------------------------*\
     $RULES
 \*------------------------------------*/
 /**
@@ -2727,70 +2443,6 @@ html.flexbox {
   -o-order: 1;
   order: 1;
   -ms-flex-order: 1; }
-
-/*------------------------------------*\
-    $GREYBOX
-\*------------------------------------*/
-/**
- * Quickly throw together greybox wireframes. Use in conjunction with other
- * inuit.css objects to create simple greybox prototypes, e.g.:
- *
-   <div class="island  greybox  greybox--medium">Header</div>
-
-   <ul class="nav  nav--fit  nav--block  greybox">
-       <li><a href=#>Home</a></li>
-       <li><a href=#>About</a></li>
-       <li><a href=#>Portfolio</a></li>
-       <li><a href=#>Contact</a></li>
-   </ul>
- *
- * The beauty of combining the greyboxing with inuit.css objects is that any
- * prototyping can quickly be converted into/used as production code.
- *
- * For a more complete prototyping framework, consider Adam Whitcroft’s Proto:
- * adamwhitcroft.com/proto
- *
- * Demo: jsfiddle.net/inuitcss/qCXfh/
- *
- */
-.greybox,
-.graybox {
-  font-size: 12px;
-  font-size: 0.75rem;
-  line-height: 2.16667;
-  font-family: sans-serif;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.2);
-  color: #fff; }
-
-.greybox a,
-.graybox a {
-  color: #fff;
-  text-decoration: underline; }
-
-/**
- * All greyboxes will occupy 100% of their parent’s width, but to alter their
- * heights we apply incrementally larger line-heights:
- */
-.greybox--small,
-.graybox--small {
-  line-height: 52px; }
-
-.greybox--medium,
-.graybox--medium {
-  line-height: 104px; }
-
-.greybox--large,
-.graybox--large {
-  line-height: 208px; }
-
-.greybox--huge,
-.graybox--huge {
-  line-height: 416px; }
-
-.greybox--gigantic,
-.graybox--gigantic {
-  line-height: 832px; }
 
 /**
  * Style trumps; helper and brand classes
@@ -3451,10 +3103,10 @@ body {
  * Block List
  * Remove boerder on last chid
  */
-.block-list a, .matrix a {
+.block-list a {
   text-decoration: none; }
 
-.block-list > li:last-child, .matrix > li:last-child {
+.block-list > li:last-child {
   border: none; }
 
 /* ==========================================================================
@@ -4609,8 +4261,10 @@ footer {
 .toggle {
   width: 54px;
   height: 54px;
-  background-size: 54px 54px;
-  float: right; }
+  background-size: 54px 54px; }
+  @media only screen and (max-width: 1023px) {
+    .toggle {
+      float: right; } }
 
 .fixed--bar {
   position: fixed;
@@ -4628,36 +4282,35 @@ footer {
   padding-top: 1em;
   margin-bottom: 0;
   padding-bottom: 0; }
-  .main-heading nav {
-    display: inline-block; }
-    .main-heading nav a {
-      height: 54px;
-      line-height: 1;
-      vertical-align: middle;
-      margin-left: 26px; }
   .main-heading::after {
     content: "";
     width: 100%;
     display: inline-block;
     line-height: 1; }
-  @media only screen and (max-width: 480px) {
-    .main-heading nav {
-      display: block; }
-    .main-heading h1,
-    .main-heading .toggle {
+
+.main-nav {
+  display: inline-block; }
+  @media only screen and (max-width: 1023px) {
+    .main-nav {
+      display: none;
+      width: 100%; } }
+
+.main-nav a {
+  margin-left: 2em; }
+  @media only screen and (max-width: 1023px) {
+    .main-nav a {
       display: block;
-      margin-bottom: 0;
-      line-height: 1;
-      vertical-align: middle;
-      text-align: center;
-      margin: 0 auto; }
-    .main-heading nav a {
-      display: inline-block;
-      width: 50%;
-      text-align: left;
-      padding: 13px 0;
       margin: 0;
-      padding-left: 26px; } }
+      padding: 13px 0; } }
+
+.show {
+  display: block !important; }
+
+/**
+ * Main Heading Current
+ */
+.main-heading .current {
+  text-decoration: underline; }
 
 /**
  * Tooltips
