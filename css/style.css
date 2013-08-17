@@ -4243,6 +4243,22 @@ footer {
 /**
  * $ Slider Classes
  */
+.img-tahan-air {
+  background: url(../img/tahan-air.jpg) no-repeat;
+  width: 100%;
+  height: 100%;
+  background-position: 100% 100%;
+  background-size: 300px; }
+
+@media only screen and (max-width: 480px) {
+  .tahan-air-bg {
+    background: url(../img/tahan-air.jpg);
+    background-position: 150px 100%;
+    background-size: 400px;
+    background-repeat: no-repeat; }
+    .tahan-air-bg p {
+      max-width: 14em; } }
+
 /**
  * Responsive Navigation
  */
