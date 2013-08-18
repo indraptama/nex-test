@@ -3231,6 +3231,51 @@ footer {
   border-top: 5px solid #E19563; }
 
 /**
+ * Animated Figure
+ */
+.animated-slide-up {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0; }
+  @media only screen and (max-width: 1023px) {
+    .animated-slide-up {
+      margin-bottom: 26px; } }
+  .animated-slide-up .figure__img img {
+    width: 100%;
+    height: auto; }
+  @media only screen and (max-width: 1023px) {
+    .animated-slide-up .figure__img {
+      margin-bottom: 0; } }
+  .animated-slide-up .figure__body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: auto;
+    font-weight: 400;
+    background: rgba(84, 69, 62, 0.8);
+    margin-bottom: 26px;
+    padding: 26px 13px;
+    color: #f4f0e2;
+    opacity: 0;
+    transition: opacity .4s;
+    -webkit-transition: all .4s; }
+    @media only screen and (max-width: 1023px) {
+      .animated-slide-up .figure__body {
+        position: relative;
+        opacity: 1;
+        margin-bottom: 0;
+        padding: 13px; } }
+  .animated-slide-up:hover .figure__body {
+    opacity: 1;
+    bottom: 0; }
+
+/**
+ * Gallery list
+ */
+.gallery-list a {
+  text-decoration: none; }
+
+/**
  * Background Class
  */
 .brown-bg {
@@ -3612,7 +3657,13 @@ footer {
   padding: 0;
   /* [2] */
   margin-left: -26px;
-  /* [3] */ }
+  /* [3] */
+  letter-spacing: -0.31em; }
+
+/* Opera hack */
+.opera:-o-prefocus,
+.grid {
+  word-spacing: -0.43em; }
 
 /**
  * 1. Cause columns to stack side-by-side.
@@ -3635,7 +3686,9 @@ footer {
   -moz-box-sizing: border-box;
   /* [5] */
   box-sizing: border-box;
-  /* [5] */ }
+  /* [5] */
+  letter-spacing: normal;
+  word-spacing: normal; }
 
 /**
  * Reversed grids allow you to structure your source in the opposite order to
