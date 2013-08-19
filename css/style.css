@@ -2995,29 +2995,59 @@ body {
 /**
  * corp img and keep aspect ratop
  */
-.ratio_16x9,
-.img-container,
-.figure__img {
+.img-crop {
   position: relative;
   display: block;
   width: 100%;
   height: auto;
   overflow: hidden;
   margin-bottom: 26px; }
-  .ratio_16x9:before,
-  .img-container:before,
-  .figure__img:before {
+  .img-crop:after {
     content: "";
-    display: block;
-    padding-top: 56.25%; }
-  .ratio_16x9 > img,
-  .img-container > img,
-  .figure__img > img {
+    display: block; }
+  .img-crop > img {
+    width: 100%;
+    height: auto;
     position: absolute;
-    top: 0;
+    top: auto;
     right: 0;
-    bottom: 0;
+    bottom: auto;
     left: 0; }
+
+/**
+ * hide top part of image
+ */
+.crop--bottom img {
+  position: absolute;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease; }
+.crop--bottom:hover img, .crop--bottom:focus img {
+  -webkit-transform: translate(0, 10%);
+  -moz-transform: translate(0, 10%);
+  -ms-transform: translate(0, 10%);
+  -o-transform: translate(0, 10%);
+  transform: translate(0, 10%); }
+
+/**
+ * Image Ratio
+ * Must use img-crop class
+ */
+.ratio_16x9:after {
+  content: "";
+  display: block;
+  padding-bottom: 56.25%; }
 
 /**
 * Elastic Video / Fluid Video
@@ -3269,6 +3299,7 @@ footer {
     padding: 26px 13px;
     color: #f4f0e2;
     opacity: 0;
+    line-height: 1.3;
     -webkit-transition: 500ms;
     -o-transition: 500ms;
     transition: 500ms; }
@@ -4326,6 +4357,23 @@ footer {
     background-repeat: no-repeat; }
     .tahan-air-bg p {
       max-width: 14em; } }
+
+/**
+ * SWipe JS
+ */
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative; }
+
+.swipe-wrap {
+  overflow: hidden;
+  position: relative; }
+
+.swipe-wrap > div {
+  float: left;
+  width: 10%;
+  position: relative; }
 
 /**
  * Responsive Navigation

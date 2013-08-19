@@ -91,7 +91,7 @@
 
 
 	<div class="container">
-		<img src="img/imgmap.jpg" alt="nexwood plank">
+		<img src="img/spin.gif" data-src="img/imgmap.jpg" alt="nexwood plank">
 		
 			<h2>Mix Of The Best Materials</h2>
 	<p class="lead">Manufactured from a homogeneous mixture of wood (Teak, Mahogany & Rosewood) and resin. The unique combination gives a high moisture resistance, does not rot, splinter or split. Even so, the typical look and feel of wood are very much preserved.</p>
@@ -259,33 +259,52 @@
 	<div class="container soft--ends">
 			
 	<h2 class="section-title-bordered">Our Gallery</h2>
-		<ul class="grid">
-			<li class="grid__item one-half palm--one-whole">
-				<a href="">
-					<figure class="animated-fade-in">
-						<div class="figure__img">
-							<img src="img/gallery/gallery-thumbnail/cherry-red-ori-malang-thumb.jpg" alt="">
-						</div>
-						<figcaption class="figure__body">
-							Cherry Red Original (Malang)
-						</figcaption>
-					</figure>	
-				</a>
-			</li><!--
 
-		--><li class="grid__item one-half palm--one-whole">
-				<a href="">
-					<figure class="animated-fade-in">
-						<div class="figure__img">
-							<img src="img/gallery/gallery-thumbnail/sahara-brown-ori-jakarta-thumb.jpg" alt="">	
+	<div style='text-align:center;padding-top:20px;'>
+  
+  <button onclick='mySwipe.prev()'>prev</button> 
+  <button onclick='mySwipe.next()'>next</button>
+
+</div>
+		<div id="mySwipe" class="swipe">
+			<div class="swipe-wrap">
+						
+						<div class="grid">
+							
+							<div class="grid__item one-half">
+								<div class="img-crop crop--bottom ratio_16x9">
+									<img src="img/gallery/gallery-ori/cherry-red-ori-malang.jpg" alt="" class="img--full">
+								</div>
+							</div>
+	
+	
+							<div class="grid__item one-half">
+								<div class="img-crop crop--bottom ratio_16x9">
+									<img src=" img/gallery/gallery-ori/cherry-red-original-puncak-jabar.jpg " class="img--full">
+								</div>
+							</div>
 						</div>
-						<figcaption class="figure__body">
-							Sahara Brown Original (Jakarta)
-						</figcaption>
-					</figure>	
-				</a>
-			</li>
-		</ul>
+
+
+						<div class="grid">
+							
+							<div class="grid__item one-half">
+								<div class="img-crop crop--bottom ratio_16x9">
+									<img src="img/gallery/gallery-ori/walnut-brown-planed-uluwatu-bali.jpg " alt="" class="img--full">
+								</div>
+							</div>
+	
+	
+							<div class="grid__item one-half">
+								<div class="img-crop crop--bottom ratio_16x9">
+									<img src=" img/gallery/gallery-ori/walnut-brown-planed-jemursari-surabaya.jpg --> " class="img--full">
+								</div>
+							</div>
+						</div>
+
+				</div>
+
+		</div>
 
 	</div>
 </div>
@@ -412,7 +431,9 @@
 <script src='js/jquery.backstretch.min.js'></script>
 <script src='js/jhere.min.js'></script>
 <script src='js/tooltipster.min.js'></script>
-<script src='js/masonry.js'></script>
+<script src='js/jquery.unveil.js'></script>
+<script src='js/jquery.bxslider.min.js'></script>
+<script src='js/swipe.js'></script>
 <script src="js/main.js"></script>
 
 <script type="text/javascript">
@@ -421,39 +442,6 @@
 		});
 	</script>
 
-<script>
-  var navigation = responsiveNav("#nav",
-  	customToggle: "#nav-toggle",
-  	 open: function () {
-          var toggle = document.getElementById("nav-toggle");
-          toggle.className = toggle.className.replace(/(^|\s)closed(\s|$)/, "opened");
-        },
-        close: function () {
-          var toggle = document.getElementById("nav-toggle");
-          toggle.className = toggle.className.replace(/(^|\s)opened(\s|$)/, "closed");
-        }
-      });
-
-</script>
-
-<script>
-            $(window).on('load', function() {
-                $('#map_canvas').jHERE({
-                    enable: ['behavior'],
-                    center: [-7.38784, 112.72727],
-                    zoom: 15,
-                    type: 'terrain'
-                }).jHERE('marker', [-7.38784, 112.72727], {
-                    icon: 'https://dl.dropboxusercontent.com/u/16675423/office-marker.png',
-                    anchor: {x: 13, y: 54},
-                    
-                }).jHERE('marker', [-7.390945, 112.722092], {
-                    icon: 'https://dl.dropboxusercontent.com/u/16675423/factory-marker.png',
-                    anchor: {x: 12, y: 54},
-                    
-                });
-            });
-        </script>
 
 <script>
 	$(".hero").backstretch([

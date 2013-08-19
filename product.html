@@ -521,7 +521,9 @@
 <script src='js/jquery.backstretch.min.js'></script>
 <script src='js/jhere.min.js'></script>
 <script src='js/tooltipster.min.js'></script>
-<script src='js/masonry.js'></script>
+<script src='js/jquery.unveil.js'></script>
+<script src='js/jquery.bxslider.min.js'></script>
+<script src='js/swipe.js'></script>
 <script src="js/main.js"></script>
 
 <script type="text/javascript">
@@ -530,39 +532,6 @@
 		});
 	</script>
 
-<script>
-  var navigation = responsiveNav("#nav",
-  	customToggle: "#nav-toggle",
-  	 open: function () {
-          var toggle = document.getElementById("nav-toggle");
-          toggle.className = toggle.className.replace(/(^|\s)closed(\s|$)/, "opened");
-        },
-        close: function () {
-          var toggle = document.getElementById("nav-toggle");
-          toggle.className = toggle.className.replace(/(^|\s)opened(\s|$)/, "closed");
-        }
-      });
-
-</script>
-
-<script>
-            $(window).on('load', function() {
-                $('#map_canvas').jHERE({
-                    enable: ['behavior'],
-                    center: [-7.38784, 112.72727],
-                    zoom: 15,
-                    type: 'terrain'
-                }).jHERE('marker', [-7.38784, 112.72727], {
-                    icon: 'https://dl.dropboxusercontent.com/u/16675423/office-marker.png',
-                    anchor: {x: 13, y: 54},
-                    
-                }).jHERE('marker', [-7.390945, 112.722092], {
-                    icon: 'https://dl.dropboxusercontent.com/u/16675423/factory-marker.png',
-                    anchor: {x: 12, y: 54},
-                    
-                });
-            });
-        </script>
 
 <script>
 	$(".hero").backstretch([
