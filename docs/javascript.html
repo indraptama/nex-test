@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    
+        <!-- Hammer reload -->
+          <script>
+            setInterval(function(){
+              try {
+                if(typeof ws != 'undefined' && ws.readyState == 1){return true;}
+                ws = new WebSocket('ws://'+(location.host || 'localhost').split(':')[0]+':35353')
+                ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
+                ws.onmessage = function(){
+                  var links = document.getElementsByTagName('link'); 
+                    for (var i = 0; i < links.length;i++) { 
+                    var link = links[i]; 
+                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) { 
+                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,''); 
+                      link.href = href + (href.indexOf('?')>=0?'&':'?') + 'hammer='+(new Date().valueOf());
+                    }
+                  }
+                }
+              }catch(e){}
+            }, 1000)
+          </script>
+        <!-- /Hammer reload -->
+      
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type='text/css'>
+	
+    <link rel='stylesheet' href='css/style.css'>
+<link rel='stylesheet' href='css/prism.css'>
+    <script src='js/vendor/modernizr-2.6.2.min.js'></script>
+   
+
+    <style>
+	section {
+		border-bottom: 1px solid #ccc;
+		padding: 26px 0;
+	}
+
+	section *:last-child {
+		margin: 0;
+	}
+
+
+	.code-title {
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc; 
+		color: #666;
+	}
+	
+	.subtitle {
+		padding-top: 26px;
+		font-weight: 500;
+		color: brown;
+	}
+
+	.html-view {
+		background: #eee;
+		border: 1px solid #ccc;
+		padding: 16px;
+		margin-bottom: 26px;
+	}
+
+    </style>
+</head>
+<body class="documentation">
+<header class="cf">
+	<div class="container main-heading">
+		<h1 class="logo">Nexwood</h1>
+		<a href="#" class="toggle visuallyhidden--desk">$</a>
+		<nav class="main-nav" id="nadv">
+
+			<a href="index.html">NEXWOOD</a><a href="product.html">Getting Started</a><a href="base.html">Base</a><a href="base.html">Component</a><a class='current' href="javascript.html">Javascript</a><a href="#contact">Contact</a>
+
+		</nav>
+		
+	</div>
+</header>
+<div class="container">
+	<hgroup class="soft--top">
+		<h1 class="hN">NEXWOOD Documentation</h1>
+	<hgroup>
+		<hr>
+	<div class="grid">
+	<div class="grid__item one-quarter">
+		<h6>Javascript element</h6>
+		<ul class="nav nav--stacked block-list idTabs">
+			<li><a href="#modal">Modal</a></li>
+			<li><a href="#bg-changer">Background Changer</a></li>
+			<li><a href="#tooltip">Tooltip</a></li>
+			<li><a href="#tabs">Tabs</a></li>
+			<li><a href="#slider">Slider</a></li>
+		</ul>
+	</div><!--
+	--><div class="grid__item three-quarters">
+		<h2 class="alpha hard flush">Javascript</h2>
+		<section id="modal">
+			<h3 class="subtitle">Modal</h3>
+
+<p>Modal adalah javascript untuk memunculkan content baru secara full diatas halaman page (dengan menghitamkan halaman disekelilingnya). Contoh Modal adalah image berukuran besar yang muncul apabila meng-klik image thumbnails dalam halaman gallery</p>
+<p>Cara untuk dapat memunculkan modal adalah dengan menuliskan link menuju image berukuran besar, dan menambahkan  <code>class="has-modal"</code> pada link anchor (<code>&lta&gt</code>) tersebut. </p>
+
+<div class="html-view">
+	<a href="img/gallery/gallery-ori/cherry-red-ori-malang.jpg" class="has-modal">
+		<img src="img/gallery/gallery-thumbnail/cherry-red-ori-malang-thumb.jpg" alt="">
+	</a>
+</div>
+
+<h6 class="code-title">HTML Markup</h6>
+<pre><code class="language-markup">
+&lta href="img/gallery/gallery-ori/cherry-red-ori-malang.jpg" class="has-modal"&gt
+	&ltimg src="img/gallery/gallery-thumbnail/cherry-red-ori-malang-thumb.jpg" alt=""&gt	
+&lt/a&gt
+</code></pre>
+<br>
+<p>Modal dapat memuat caption dengan menambahkan <code>title="foo barrr (isi dari caption)"</code> setelah <code>class="has-modal"</code>. </p>
+<div class="html-view">
+	<a href="img/gallery/gallery-ori/cherry-red-ori-malang.jpg" class="has-modal" title="Cherry Red Original (Malang) - Isi Caption Modal">
+		<img src="img/gallery/gallery-thumbnail/cherry-red-ori-malang-thumb.jpg" alt="">
+	</a>
+</div>
+<h6 class="code-title">HTML Markup</h6>
+<pre><code class="language-markup">
+&lta href="img/gallery/gallery-ori/cherry-red-ori-malang.jpg" class="has-modal" title="Cherry Red Original (Malang) - Isi Caption Modal"&gt
+	&ltimg src="img/gallery/gallery-thumbnail/cherry-red-ori-malang-thumb.jpg" alt=""&gt	
+&lt/a&gt
+</code></pre>
+		</section>
+		
+		<section id="bg-changer">
+			<h3 class="subtitle">Background Changer</h3>
+<p>Background Changer adalah javascript untuk menambah background yang dapat berubah secara dinamik pada suatu element tertentu. Contoh penggunaan background changer adalah hero unit pada halaman utama</p>
+<p>Background Changer diatur dengan javascript yang ditempatkan pada bagian akhir halaman sebelum <code>&lt/body&gt</code></p>
+
+<div class="html-view">
+		<div class="hero">
+		
+		<div class="container soft--top">
+			<div class="grid grid--bottom">
+				<div class="grid__item one-half palm--one-whole visuallyhidden--palm">
+					<img src="img/slider/hero-plank.png" alt="" class="img--center">
+					
+				</div><!--
+				
+			--><div class="grid__item one-half palm--one-whole">
+				<div class="slider__body">	
+					<hgroup>
+       					<h2 class="nH kilo weight--light">Extraordinary Better Than Wood</h1>
+       					<h3 class="nH weight--light">Beauty outside and Strong Inside</h2>
+   					<hgroup>
+   						<a href="#nexwood-fp" class="btn btn--hard btn--gamma btn--bevel">Find Out More</a>
+
+				</div>
+				</div>
+			</div>
+   		</div>
+			
+
+	</div>
+</div>
+<h6 class="code-title">HTML Markup</h6>
+<pre><code class="language-javascript">&ltscript&gt
+$(".hero").backstretch([
+	"img/slider/slide-1.jpg", //lokasi image 
+	"img/slider/slide-2.jpg", //lokasi image 
+	"img/slider/slide-4.jpg", //lokasi image
+	], 
+	{
+		fade: 750, 
+		duration: 4000 //mengatur lama pergantian
+	});
+&lt/script&gt
+&lt/body&gt
+</code></pre>
+
+
+		</section>
+		
+		<section id="tooltip">
+			<h3 class="subtitle">Tooltip</h3>
+<p>Tooltip adalah javascrpit untuk memunculkan ballon kecil berisikan text ketika menghover suatu element. Contoh dari tooltips adalah ballon yang muncul ketika menghover color selection di halaman product</p>
+<p>Untuk memunculkan tooltip adalah menambah <code>class="tooltip" </code>disertai <code>title="(text-tooltip)"</code> pada element yang di hendaki</p>
+
+<div class="html-view">
+<a href="#dock1-ceri" class="img--round color-thumb-small cherry-red tooltip" title="Cherry Red">ceri</a>
+</div>
+
+<h6 class="code-title">HTML Markup</h6>
+<pre><code class="language-markup">&lta href="#dock1-ceri" class="img--round color-thumb-small cherry-red tooltip" title="Cherry Red"&gtceri&lt/a&gt
+</code></pre>
+		</section>
+
+		<section id="tabs">
+			<h3 class="subtitle">Tabs</h3>
+<p>Tabs adalah javascript yang berfungsi untuk menyembunyikan sebagian content, dan memunculkan content tersebut apabila link anchor di klik. Contoh tabs adalah side-navigation di halaman about</p>
+<p>Untuk membuat tabs dibutuhkan link (<code>&lta href=""&gt</code>) menunju <code>#id</code> suatu element yang dimuat dalam suatu container <code>div</code>, <code>ul</code> dan <code>nav</code> dengan <code>class="idTabs"</code>. Element <code>#id</code> yang telah dibuat link achor dalam <code>class="idTabs</code> secara otomoatis akan disembunyikan</p>
+
+<div class="html-view">
+	<nav class="idTabs">
+		<a href="#tabs1">Tabs1</a>
+		<a href="#tabs2">Tabs1</a>
+		<a href="#tabs3">Tabs1</a>
+	</nav>
+
+	<div style="border: 1px solid #ccc">
+		<div class="tabs1">
+			INI ISI TABS 1 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, fugiat explicabo recusandae sequi assumenda vitae quaerat reiciendis doloremque dolorum excepturi inventore cum voluptas in consectetur saepe ipsam velit illum sed.
+		</div>
+		<div class="tabs2">
+			INI ISI TABS 2 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, eaque dolorem qui placeat excepturi ipsa doloremque iure sequi ex similique. Maxime, reiciendis repellendus totam odit minima veniam tenetur facilis et!
+		</div>
+		<div class="tabs3">
+			INI ISI TABS 3 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, iste, officia, labore in voluptates similique unde quo nisi quisquam fuga amet laudantium numquam adipisci iure ut alias rerum nostrum quos.
+		</div>
+	</div>
+</div>
+
+<h6 class="code-title">HTML Markup</h6>
+<pre><code class="language-markup">&ltnav class="idTabs"&gt
+	&lta href="#tabs1"&gtTabs1&lt/a&gt
+	&lta href="#tabs2"&gtTabs1&lt/a&gt
+	&lta href="#tabs3"&gtTabs1&lt/a&gt
+&lt/nav&gt
+
+&ltdiv&gt
+	&ltdiv class="tabs1"&gt //Automaticly Hidden
+		INI ISI TABS 1 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, fugiat explicabo recusandae sequi assumenda vitae quaerat reiciendis doloremque dolorum excepturi inventore cum voluptas in consectetur saepe ipsam velit illum sed.
+	&lt/div&gt
+	&ltdiv class="tabs2"&gt //automaticly hidden
+		INI ISI TABS 2 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, eaque dolorem qui placeat excepturi ipsa doloremque iure sequi ex similique. Maxime, reiciendis repellendus totam odit minima veniam tenetur facilis et!
+	&lt/div&gt
+	&ltdiv class="tabs3"&gt //automaticly hidden
+		INI ISI TABS 3 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, iste, officia, labore in voluptates similique unde quo nisi quisquam fuga amet laudantium numquam adipisci iure ut alias rerum nostrum quos.
+	&lt/div&gt
+&lt/div&gt
+</code></pre>
+		</section>
+		
+		<section id="slider">
+			<h3 class="subtitle">OWL Slider</h3>
+<p>Owl Slider adalah content slider yang dapat bergerak secara automatis ataupun secara manual. Contoh Owl slider adalah gambar pada bagian our gallery di halaman home (index.html)</p>
+<p>Untuk membuat owl slider dibutuhkan beberapa content yang disimpan dalam suatu kontainer <code>ul</code> atau <code>div</code> dengan diberi <code>id="owl-slider"</code> dan <code>class="swipe"</code>.</p>
+
+<div class="html-view">
+	<div id="owl-slider" class="swipe">
+			
+						
+						
+								<div class="img-crop crop--bottom ratio_16x9">
+									<img src="img/gallery/gallery-thumbnail/cherry-red-ori-malang-thumb.jpg" alt="" class="img--full">
+								</div>
+							
+	
+	
+							
+								<div class="img-crop crop--bottom ratio_16x9">
+									<img src=" img/gallery/gallery-thumbnail/cherry-red-original-puncak-jabar-thumb.jpg " class="img--full">
+								</div>
+							
+						
+
+						
+							
+							
+								<div class="img-crop crop--bottom ratio_16x9">
+									<img src="img/gallery/gallery-thumbnail/walnut-brown-planed-uluwatu-bali-thumb.jpg " alt="" class="img--full">
+								</div>
+						
+	
+	
+						
+								<div class="img-crop crop--bottom ratio_16x9">
+									<img src=" img/gallery/gallery-thumbnail/cherry-red-planed-ubud-bali-thumb.jpg" class="img--full">
+								</div>
+								
+								<div class="img-crop crop--bottom ratio_16x9">
+									<img src=" img/gallery/gallery-thumbnail/cherry-red-planed-uluwatu-bali-thumb.jpg ">
+								</div>
+
+								<div class="img-crop crop--bottom ratio_16x9">
+									<img src=" img/gallery/gallery-thumbnail/sahara-brown-original-puncak-jabar-thumb.jpg ">
+								</div>
+								
+								<div class="img-crop crop--bottom ratio_16x9">
+					<img src=" img/gallery/gallery-thumbnail/sahara-brown-planed-batu-malang-thumb.jpg ">
+				</div>
+				
+				<div class="img-crop crop--bottom ratio_16x9">
+					<img src=" img/gallery/gallery-thumbnail/sahara-brown-planed-pantai-Indah-kapuk-jakarta-thumb.jpg ">
+				</div>
+				
+
+		</div>
+</div>
+
+<h6 class="code-title">HTML Markup</h6><pre><code class="language-markup">&ltdiv id="owl-slider" class="swipe"&gt
+	&ltdiv class="img-crop crop--bottom ratio_16x9"&gt
+		&ltimg src="img/gallery/gallery-thumbnail/cherry-red-ori-malang-thumb.jpg" alt="" class="img--full"&gt
+	&lt/div&gt
+	&ltdiv class="img-crop crop--bottom ratio_16x9"&gt
+		&ltimg src=" img/gallery/gallery-thumbnail/cherry-red-original-puncak-jabar-thumb.jpg " class="img--full"&gt
+	&lt/div&gt
+	&ltdiv class="img-crop crop--bottom ratio_16x9"&gt
+		&ltimg src="img/gallery/gallery-thumbnail/walnut-brown-planed-uluwatu-bali-thumb.jpg " alt="" class="img--full"&gt
+	&lt/div&gt
+	&ltdiv class="img-crop crop--bottom ratio_16x9"&gt
+		&ltimg src=" img/gallery/gallery-thumbnail/cherry-red-planed-ubud-bali-thumb.jpg" class="img--full"&gt
+	&lt/div&gt
+	&ltdiv class="img-crop crop--bottom ratio_16x9"&gt
+		&ltimg src=" img/gallery/gallery-thumbnail/cherry-red-planed-uluwatu-bali-thumb.jpg "&gt
+	&lt/div&gt
+	&ltdiv class="img-crop crop--bottom ratio_16x9"&gt
+		&ltimg src=" img/gallery/gallery-thumbnail/sahara-brown-original-puncak-jabar-thumb.jpg "&gt
+	&lt/div&gt
+	&ltdiv class="img-crop crop--bottom ratio_16x9"&gt
+		&ltimg src=" img/gallery/gallery-thumbnail/sahara-brown-planed-batu-malang-thumb.jpg "&gt
+	&lt/div&gt
+	&ltdiv class="img-crop crop--bottom ratio_16x9"&gt
+		&ltimg src=" img/gallery/gallery-thumbnail/sahara-brown-planed-pantai-Indah-kapuk-jakarta-thumb.jpg "&gt
+	&lt/div&gt
+&lt/div&gt &lt!-- end owl-slider --&gt
+</code></pre>
+
+<br>
+<p>Owl slider diatur menggunakan javascript dalam main.js. Secara default owl slider akan menampilkan 4 gambar yang akan berubah jumlahnya menjadi lebih sedikit sesuai dengan ukuran screen.</p>
+
+<h6 class="code-title">Javascript Markup</h6>
+<pre><code class="language-javascript">$(document).ready(function() {
+	$("#owl-slider").owlCarousel({
+    	autoplay: 3000, //Untuk mengatur lama perpindahan
+    	goToFirst: true,
+    	goToFirstSpeed:  1000,
+    	navigation: true, // memunculkan navigasi
+    	items: 4, // mengatur jumlah item dalam sekali tampilan
+	});
+});
+</code></pre>
+
+		</section>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script src='js/vendor/jquery-1.10.2.min.js'></script>
+<script src='js/plugins.js'></script>
+<script src='js/jquery.idTabs.js'></script>
+<script src='js/jquery.backstretch.min.js'></script>
+<script src='js/tooltipster.min.js'></script>
+<script src='js/jquery.unveil.js'></script>
+<script src='js/jquery.magnific-popup.min.js'></script>
+<script src='js/owl.carousel.min.js'></script>
+<script src='js/prism.js'></script>
+
+<script src="js/main.js"></script>
+
+<script type="text/javascript">
+		$(document).ready(function() {
+			 $('.tooltip').tooltipster();
+		});
+</script>
+
+
+<script>
+	$(".hero").backstretch([
+		"img/slider/slide-1.jpg", "img/slider/slide-2.jpg", "img/slider/slide-4.jpg",
+		], {
+			fade: 750,
+			duration: 4000
+		});
+
+</script>
+
+<script>
+	$(document).ready(function(){
+		$('.toggle').click(function) {
+			$('#nav').addClass('.visuallyhidden--palm')
+		};
+	})
+
+</script>
+
+</body>
+</html>

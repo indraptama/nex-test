@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    
+        <!-- Hammer reload -->
+          <script>
+            setInterval(function(){
+              try {
+                if(typeof ws != 'undefined' && ws.readyState == 1){return true;}
+                ws = new WebSocket('ws://'+(location.host || 'localhost').split(':')[0]+':35353')
+                ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
+                ws.onmessage = function(){
+                  var links = document.getElementsByTagName('link'); 
+                    for (var i = 0; i < links.length;i++) { 
+                    var link = links[i]; 
+                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) { 
+                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,''); 
+                      link.href = href + (href.indexOf('?')>=0?'&':'?') + 'hammer='+(new Date().valueOf());
+                    }
+                  }
+                }
+              }catch(e){}
+            }, 1000)
+          </script>
+        <!-- /Hammer reload -->
+      
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type='text/css'>
+	
+    <link rel='stylesheet' href='css/style.css'>
+<link rel='stylesheet' href='css/prism.css'>
+    <script src='js/vendor/modernizr-2.6.2.min.js'></script>
+   
+
+    <style>
+	section {
+		border-bottom: 1px solid #ccc;
+		padding: 26px 0;
+	}
+
+	section *:last-child {
+		margin: 0;
+	}
+
+
+	.code-title {
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc; 
+		color: #666;
+	}
+	
+	.subtitle {
+		padding-top: 26px;
+		font-weight: 500;
+		color: brown;
+	}
+
+	.html-view {
+		background: #eee;
+		border: 1px solid #ccc;
+		padding: 16px;
+		margin-bottom: 26px;
+	}
+
+    </style>
+</head>
+<body class="documentation">
+<header class="cf">
+	<div class="container main-heading">
+		<h1 class="logo">Nexwood</h1>
+		<a href="#" class="toggle visuallyhidden--desk">$</a>
+		<nav class="main-nav" id="nadv">
+
+			<a class='current' href="index.html">NEXWOOD</a><a href="product.html">Getting Started</a><a href="base.html">Base</a><a href="base.html">Component</a><a href="javascript.html">Javascript</a><a href="#contact">Contact</a>
+
+		</nav>
+		
+	</div>
+</header>
+<div class="container">
+	<hgroup class="soft--top">
+		<h1 class="hN">NEXWOOD Documentation</h1>
+	<hgroup>
+		<hr>
+	<div class="grid">
+	<div class="grid__item one-quarter">
+		a
+	</div><!--
+	--><div class="grid__item three-quarters">
+		<h2 class="alpha hard flush">Typography</h2>
+		<section id="headings">
+			<h3 class="subtitle">Headings</h3>
+<p> Heading dalam site ini terdiri dari <code> &lth1&gt</code> hingga <code>&lth6&gt</code> dengan besar huruf yang berbeda-beda, antara lain:</p>
+
+<div class="html-view">
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6>
+</div>
+
+
+<h6 class="code-title">HTML Code</h6>
+<pre>
+	<code class="language-markup">
+&lth1&gtHeading 1 &lt/h1&gt
+&lth2&gtHeading 2 &lt/h2&gt
+&lth3&gtHeading 3 &lt/h3&gt
+&lth4&gtHeading 4 &lt/h4&gt
+&lth5&gtHeading 5 &lt/h5&gt
+&lth6&gtHeading 6 &lt/h6&gt
+	</code>
+</pre>
+
+
+
+		</section>
+		
+		<section>
+			<h3 class="subtitle">Paragraph</h3>
+<h5>Normal Paragraph</h5>
+<p>Paragraph dalam site ini menggunakan ukuran 16px dengan line-height 1.625em</p>
+
+<div class="html-view">
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, a, error beatae enim neque quidem architecto rem voluptatibus inventore vel dolorum temporibus assumenda repellat veniam deserunt natus autem reiciendis sint?</p>
+</div>
+
+<h6 class="code-title">
+	HTML Code
+</h6>
+<pre class="language-markup"><code class="language-markup">&ltp&gtLorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, magnam possimus delectus officiis iusto? Porro, exercitationem sit iste quo totam cupiditate reprehenderit et velit qui quas amet cum illo temporibus.&lt/p&gt</code></pre>
+<hr>
+<h5>Lead Paragraph</h5>
+<p>Lead Paragraph adalah variasi untuk memperbesar ukuran huruf paragraph yang biasa digunakan pada awal artikel</p>
+
+<div class="html-view">
+<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, unde ut totam iusto architecto quasi quidem aliquid ipsam perspiciatis. Necessitatibus, molestias beatae eaque in consectetur dolores minima amet odio maiores.</p>
+</div>
+
+<h6 class="code-title">HTML Code</h6>
+<pre><code class="language-markup">&ltp class="lead"&gtLorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, unde ut totam iusto architecto quasi quidem aliquid ipsam perspiciatis. Necessitatibus, molestias beatae eaque in consectetur dolores minima amet odio maiores.&lt/p&gt</code></pre>
+		</section>
+		
+		<section>
+			<h3 class="subtitle">Class Helper Untuk Memperbesar Ukuran Huruf</h3>
+<p>Selain heading <code> &lth1&gt</code> hingga <code>&lth6&gt</code>tersedia <code>.class</code> helper untuk memperbesar ukuran huruf. Class ini dapat digunakan bersama heading (<code>&lth1&gt</code> hingga <code>&lth6&gt</code>), Paragraph (&ltp&gt).<br> <code>.class</code> tersebut antara lain :</p>
+
+<div class="html-view">
+<p class="giga">Giga Class</p>
+<p class="mega">Mega Class</p>
+<p class="kilo">Kilo Size</p>
+<p class="alpha">Alpha Size</p>
+<p class="beta">Beta Size</p>
+<p class="gamma">Gamma Size</p>
+<p class="delta">Delta Size</p>
+<p class="epsilon">Epsilon Size</p>
+<p class="zeta">Zeta Class</p>
+</div>
+
+<h6 class="code-title">HTML Code</h6>
+<pre class="language-markup"><code class="language-markup">
+&ltp class="giga"&gtGiga Class&lt/p&gt
+&ltp class="mega"&gtMega Class&lt/p&gt
+&ltp class="kilo"&gtKilo Size&lt/p&gt
+&ltp class="alpha"&gtAlpha Size&lt/p&gt
+&ltp class="beta"&gtBeta Size&lt/p&gt
+&ltp class="gamma"&gtGamma Size&lt/p&gt
+&ltp class="delta"&gtDelta Size&lt/p&gt
+&ltp class="epsilon"&gtEpsilon Size&lt/p&gt
+&ltp class="zeta"&gtZeta Class&lt/p&gt
+	</code></pre>
+
+<h6 class="code-title">CSS Code</h6>
+<pre><code class="language-css">
+.giga
+.mega
+.kilo
+.alpha  	//font dibesarkan sama dengan ukuran h1
+.beta 		//font dibesarkan sama dengan ukuran h2
+.gamma  	//font dibesarkan sama dengan ukuran h3
+.delta  	//font dibesarkan sama dengan ukuran h4
+.epsilon    //font dibesarkan sama dengan ukuran h5
+.zeta 		//font dibesarkan sama dengan ukuran h6
+	</code></pre>
+		</section>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<script src='js/vendor/jquery-1.10.2.min.js'></script>
+<script src='js/plugins.js'></script>
+<script src='js/jquery.idTabs.js'></script>
+<script src='js/jquery.backstretch.min.js'></script>
+<script src='js/tooltipster.min.js'></script>
+<script src='js/jquery.unveil.js'></script>
+<script src='js/jquery.magnific-popup.min.js'></script>
+<script src='js/owl.carousel.min.js'></script>
+<script src='js/prism.js'></script>
+
+<script src="js/main.js"></script>
+
+<script type="text/javascript">
+		$(document).ready(function() {
+			 $('.tooltip').tooltipster();
+		});
+</script>
+
+
+<script>
+	$(".hero").backstretch([
+		"img/slider/slide-1.jpg", "img/slider/slide-2.jpg", "img/slider/slide-4.jpg",
+		], {
+			fade: 750,
+			duration: 4000
+		});
+
+</script>
+
+<script>
+	$(document).ready(function(){
+		$('.toggle').click(function) {
+			$('#nav').addClass('.visuallyhidden--palm')
+		};
+	})
+
+</script>
+
+</body>
+</html>
